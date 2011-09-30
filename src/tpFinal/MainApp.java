@@ -20,6 +20,7 @@ public class MainApp {
 	        e.printStackTrace();
 	    }
 		
+		//salut sa va?
 		AppFrame.getInstance();
 	}
 
