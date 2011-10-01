@@ -1,4 +1,4 @@
-package tpFinal.form;
+ï»¿package tpFinal.form;
 
 import java.awt.Font;
 
@@ -13,9 +13,9 @@ import tpFinal.model.textArea.UndoAction;
 import tpFinal.model.textArea.UndoRedoListener;
 
 /**
- * Gère la zone de contexte où le pseudo-code est écrit et 
- * gère les actions « Annuler » et « Rétablir ».
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * GÃ¨re la zone de contexte oÃ¹ le pseudo-code est Ã©crit et 
+ * gÃ¨re les actions Â« Annuler Â» et Â« RÃ©tablir Â».
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class AppText extends JTextPane {
 
@@ -27,7 +27,7 @@ public class AppText extends JTextPane {
 	private CursorListener caretListener;
 
 	/**
-	 * Crée la zone de texte.
+	 * CrÃ©e la zone de texte.
 	 */
 	protected AppText() {
 		super();
@@ -43,11 +43,11 @@ public class AppText extends JTextPane {
 
 	/**
 	 * Simule la touche Delete du clavier
-	 * S'il y a une sélection, elle est supprimé
-	 * S'il n'y a pas de sélection, elle supprime le caractère après le curseur
+	 * S'il y a une sÃ©lection, elle est supprimÃ©
+	 * S'il n'y a pas de sÃ©lection, elle supprime le caractÃ¨re aprÃ¨s le curseur
 	 */
 	protected void delete(){
-		//S'il n'y a pas de sélection, on sélectionne le caractère après le curseur
+		//S'il n'y a pas de sÃ©lection, on sÃ©lectionne le caractÃ¨re aprÃ¨s le curseur
 		if (!this.caretListener.isSelected()){
 			this.select(this.caretListener.getSelection().x, this.caretListener.getSelection().x);
 		}

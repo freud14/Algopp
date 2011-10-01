@@ -1,13 +1,13 @@
-package tpFinal.model.exceptions.codeExceptions;
+ï»¿package tpFinal.model.exceptions.codeExceptions;
 
 import tpFinal.model.exceptions.CodeException;
 
 /**
- * Exception survenant lorsque le client utilise un mot réservé incorrectement.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * Exception survenant lorsque le client utilise un mot rÃ©servÃ© incorrectement.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class UseOfReservedWord extends CodeException {
 	public UseOfReservedWord() {
-		super("Mot réservé comme nom de variable");
+		super("Mot rÃ©servÃ© comme nom de variable");
 	}
 }

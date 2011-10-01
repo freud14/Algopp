@@ -1,13 +1,13 @@
-package tpFinal.model.exceptions.codeExceptions;
+ï»¿package tpFinal.model.exceptions.codeExceptions;
 
 import tpFinal.model.exceptions.CodeException;
 
 /**
- * Exception survenant lorsqu'on essai de lire un booléen.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * Exception survenant lorsqu'on essai de lire un boolÃ©en.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class ReadingException extends CodeException {
 	public ReadingException() {
-		super("Lecture de booléen impossible");
+		super("Lecture de boolÃ©en impossible");
 	}
 }

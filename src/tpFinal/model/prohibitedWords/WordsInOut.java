@@ -1,8 +1,8 @@
-package tpFinal.model.prohibitedWords;
+ï»¿package tpFinal.model.prohibitedWords;
 
 /**
- * Enum des mots clés liés aux entrées-sorties.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * Enum des mots clÃ©s liÃ©s aux entrÃ©es-sorties.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public enum WordsInOut implements Words {
 	AFFICHER("afficher"),

@@ -1,11 +1,11 @@
-package tpFinal.model;
+ï»¿package tpFinal.model;
 
 //import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
- * Cette classe gère les variables déclarés dans le pseudo-code de l'utlisateur.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * Cette classe gÃ¨re les variables dÃ©clarÃ©s dans le pseudo-code de l'utlisateur.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  * 
  */
 public class Environment {
@@ -16,8 +16,8 @@ public class Environment {
 	/**
 	 * Cette ajoute une nouvelle variable dans l'environnement.
 	 * @param name Le nom de la nouvelle variable
-	 * @param value L'objet représentant le valeur de la variable
-	 * @return Retourne vrai si l'ajout s'est effectué; faux si elle existait déjà.
+	 * @param value L'objet reprÃ©sentant le valeur de la variable
+	 * @return Retourne vrai si l'ajout s'est effectuÃ©; faux si elle existait dÃ©jÃ .
 	 */
 	protected boolean addVariable(String name, Object value) {
 		boolean retour = false;
@@ -30,18 +30,18 @@ public class Environment {
 	}
 
 	/**
-	 * Renvoie l'objet représentant une variable.
+	 * Renvoie l'objet reprÃ©sentant une variable.
 	 * @param name Le nom de la variable
-	 * @return Retourne l'objet représentant la variable.
+	 * @return Retourne l'objet reprÃ©sentant la variable.
 	 */
 	protected Object getVariableByName(String name) {
 		return this.variables.get(name);
 	}
 	
 	/**
-	 * Modifie l'objet représentant une variable.
+	 * Modifie l'objet reprÃ©sentant une variable.
 	 * @param name Le nom de la variable
-	 * @param value L'objet réprésentant la variable
+	 * @param value L'objet rÃ©prÃ©sentant la variable
 	 * @return Retourne vrai si la variable existait; faux sinon.
 	 */
 	protected boolean setVariableByName(String name, Object value) {

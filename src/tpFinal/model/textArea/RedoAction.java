@@ -1,4 +1,4 @@
-package tpFinal.model.textArea;
+ï»¿package tpFinal.model.textArea;
 
 import java.awt.event.ActionEvent;
 
@@ -10,7 +10,7 @@ import tpFinal.form.AppFrame;
 /**
  *  Classe qui s'occupe du "Refaire" ("Redo")
  * 
- *  @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ *  @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  *  @author http://www.lifl.fr/~secq/IUT/SWING/TP_Swing3.html
  */
 public class RedoAction extends AbstractAction {
@@ -19,12 +19,12 @@ public class RedoAction extends AbstractAction {
 	 * Constructeur de RedoAction.
 	 */
 	public RedoAction() {
-		super("Rétablir");
+		super("RÃ©tablir");
 		setEnabled(false);
 	}
 	
 	/**
-	 * Lors d'un appel, la méthode essaie de refaire la dernière action, et si impossible,
+	 * Lors d'un appel, la mÃ©thode essaie de refaire la derniÃ¨re action, et si impossible,
 	 * affichage d'un message d'erreur. Changement du statut des Undo et Redo.
 	 */
 	public void doRedo(){
@@ -37,7 +37,7 @@ public class RedoAction extends AbstractAction {
 	}
 
 	/**
-	 * Mets à jour l'état du Redo avec le dernier événement possible à refaire.
+	 * Mets Ã  jour l'Ã©tat du Redo avec le dernier Ã©vÃ©nement possible Ã  refaire.
 	 */
 	protected void updateRedoState() {
 		if (AppFrame.getInstance().getAppText().getUndo().canRedo()) {
@@ -48,7 +48,7 @@ public class RedoAction extends AbstractAction {
 	}
 
 	/**
-	 * Appelle la méthode doRedo()
+	 * Appelle la mÃ©thode doRedo()
 	 */
 	public void actionPerformed(ActionEvent e) {
 		doRedo();

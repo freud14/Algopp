@@ -1,10 +1,10 @@
-package tpFinal.model.exceptions;
+ï»¿package tpFinal.model.exceptions;
 
 /**
- * Classe mère de nos exceptions.
+ * Classe mÃ¨re de nos exceptions.
  * Permet de catcher l'ensemble de celles-ci simplement en catchant
  * celle-ci. Elle n'est pas directement utilisable (abstract).
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public abstract class CodeException extends Exception {
 	protected CodeException(String message) {

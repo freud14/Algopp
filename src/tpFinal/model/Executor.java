@@ -1,4 +1,4 @@
-package tpFinal.model;
+ï»¿package tpFinal.model;
 
 import java.util.Stack;
 
@@ -24,24 +24,24 @@ import tpFinal.model.prohibitedWords.WordsDeclaration;
 import tpFinal.model.prohibitedWords.WordsInOut;
 import tpFinal.model.prohibitedWords.WordsLoop;
 
-//Contenir erreur & découper le texte en section avec mots clés
-//  Exécute le code en faisant des mini-parse et le divise pour le donner au parseur
+//Contenir erreur & dÃ©couper le texte en section avec mots clÃ©s
+//  ExÃ©cute le code en faisant des mini-parse et le divise pour le donner au parseur
 /**
- * Gère les erreurs retournés par le parser et exécute le code en s'aidant du parser
- * 	(qui lui dit si une condition est vrai/faux) et gère les conditions à l'aide d'une
+ * GÃ¨re les erreurs retournÃ©s par le parser et exÃ©cute le code en s'aidant du parser
+ * 	(qui lui dit si une condition est vrai/faux) et gÃ¨re les conditions Ã  l'aide d'une
  * 	pile (pour trouver les sinon/finsi).
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class Executor {
 	
 	private static final String READ_MSG = "Veuillez entrez la valeur ";
 	private static final String READ_INTEGER = "de l'entier : ";
-	private static final String READ_STRING = "de la chaîne de caractères : ";
+	private static final String READ_STRING = "de la chaÃ®ne de caractÃ¨res : ";
 	private static final String STR_AFFECTATION = "<-";
 	
 	private String[] txtLines;
 	
-	//Numéro de ligne pour la lecture (utile en tant que propriété pour les boucles)
+	//NumÃ©ro de ligne pour la lecture (utile en tant que propriÃ©tÃ© pour les boucles)
 	private int lineNbToRead = 0;
 	
 	//profondeur des Si + TantQue
@@ -50,44 +50,44 @@ public class Executor {
 	//profondeur des TantQue
 	private Stack<WhileNode> whileStack = new Stack<WhileNode>();
 	
-	//Doit être passer au Parser
+	//Doit Ãªtre passer au Parser
 	private Environment variables = new Environment();
 	
 	/**
-	 * Crée un instance de Executor afin d'exécuter le texte entré par l'utilisateur.
-	 * @param txt	Le texte entré par l'utilisateur.
+	 * CrÃ©e un instance de Executor afin d'exÃ©cuter le texte entrÃ© par l'utilisateur.
+	 * @param txt	Le texte entrÃ© par l'utilisateur.
 	 */
 	public Executor(AppText txt) {
 		AppFrame.getInstance().getAppExecuteBar().clearErrorZone();
 		AppFrame.getInstance().getAppExecuteBar().clearDisplayZone();
 		
-		//On sépare dans un tableau en enlevant les espaces
+		//On sÃ©pare dans un tableau en enlevant les espaces
 		this.txtLines = txt.getText().toLowerCase().split("\n");
 		
-		//On enlève les espaces
+		//On enlÃ¨ve les espaces
 		for (int i = 0; i < this.txtLines.length; i++) {
 			this.txtLines[i] = this.txtLines[i].trim();
 		}
 	}
 	
 	/**
-	 * Lance l'exécution du code entré par le client.
+	 * Lance l'exÃ©cution du code entrÃ© par le client.
 	 */
 	public void execute() {
 		int lng = this.txtLines.length;
 
 		this.conditionalStack.push(ReadMode.READ_TRUE);
 		try {
-		//Tant que l'exécution du programme n'est pas terminée
+		//Tant que l'exÃ©cution du programme n'est pas terminÃ©e
 		for (this.lineNbToRead = 0; this.lineNbToRead < lng; this.lineNbToRead++) {
-			//Booléen disant si une action a été effectuée pour cette ligne
-			//  (respect des normes du Cégep --> pas de 'continue')
+			//BoolÃ©en disant si une action a Ã©tÃ© effectuÃ©e pour cette ligne
+			//  (respect des normes du CÃ©gep --> pas de 'continue')
 			boolean isSomething = false;
 			//Si la ligne n'est pas vide
 			if (this.txtLines[this.lineNbToRead].isEmpty() == false) {
 				//Type de lecture TRUE
 				if (this.conditionalStack.peek().equals(ReadMode.READ_TRUE)) {
-					//CHECK : Déclaration
+					//CHECK : DÃ©claration
 					if (true == (isSomething = this.isDeclaration()));
 					//CHECK : IN-OUT
 					else if (true == (isSomething = this.isInOut()));
@@ -113,9 +113,9 @@ public class Executor {
 					//CHECK : endWhile
 					else if (isSomething = this.isEndWhile());
 				}
-				//CHECK : Stack --> Aucun type de lecture (conditionalStack endommagée)
+				//CHECK : Stack --> Aucun type de lecture (conditionalStack endommagÃ©e)
 				//Pas besoin de tester whileStack car au seul .pop() possible, 
-				// on a déjà testé qu'il serait valide dans sa méthode.
+				// on a dÃ©jÃ  testÃ© qu'il serait valide dans sa mÃ©thode.
 				if (this.conditionalStack.isEmpty()) {
 					throw new StackException();
 				}
@@ -125,18 +125,18 @@ public class Executor {
 				}
 			}
 		}
-		//Évite d'écrire une ~12aine de catch d'exceptions
-		//De plus, on n'a pas d'exceptions throwable catché ici autres que celles créés
-		// cependant on peut quand même catcher celles qui peuvent survenir de Java.
-		//Voir les "import" pour avoir un bon résumé de ceux-ci.
+		//Ã‰vite d'Ã©crire une ~12aine de catch d'exceptions
+		//De plus, on n'a pas d'exceptions throwable catchÃ© ici autres que celles crÃ©Ã©s
+		// cependant on peut quand mÃªme catcher celles qui peuvent survenir de Java.
+		//Voir les "import" pour avoir un bon rÃ©sumÃ© de ceux-ci.
 		} catch (CodeException e) { 
 			this.showErrorAtLine(e.getMessage(), this.lineNbToRead);
 		}
 	}
 	
-	//=====DÉBUT MÉTHODES DE DÉCOUPAGE
+	//=====DÃ‰BUT MÃ‰THODES DE DÃ‰COUPAGE
 	
-	//Dit si la ligne représente une déclaration de variable.
+	//Dit si la ligne reprÃ©sente une dÃ©claration de variable.
 	private boolean isDeclaration() throws SyntaxException, 
 	UnknownVariableException, VariableRedefinitionException, MissingParenthesisException, 
 	ArithmeticSyntaxException, UseOfReservedWord, TypeMissMatchException {
@@ -151,7 +151,7 @@ public class Executor {
 		return rtr;
 	}
 
-	//Dit si la ligne représente une entrée ou une sortie de variable.
+	//Dit si la ligne reprÃ©sente une entrÃ©e ou une sortie de variable.
 	private boolean isInOut() throws SyntaxException, ArithmeticSyntaxException, 
 	ReadingException, UnknownVariableException {
 		boolean rtr = false;
@@ -170,7 +170,7 @@ public class Executor {
 		return rtr;
 	}
 
-	//Dit si la ligne représente une affectation de variable.
+	//Dit si la ligne reprÃ©sente une affectation de variable.
 	private boolean isAssignment() throws SyntaxException, UnknownVariableException, 
 	MissingParenthesisException, ArithmeticSyntaxException, TypeMissMatchException {
 		boolean rtr = false;
@@ -187,7 +187,7 @@ public class Executor {
 		return rtr;
 	}
 
-	//Dit si la ligne représente un début de segment conditionnel découlant d'une condition ("Si").
+	//Dit si la ligne reprÃ©sente un dÃ©but de segment conditionnel dÃ©coulant d'une condition ("Si").
 	private boolean isIf() throws MissingParenthesisException, SyntaxException, 
 	UnknownVariableException, ArithmeticSyntaxException, TypeMissMatchException {
 		boolean rtr = false;
@@ -210,8 +210,8 @@ public class Executor {
 		return rtr;
 	}
 
-	//Dit si la ligne représente un début de segment conditionnel découlant d'au moins une condition fausse
-	// en relançant une autre condition ("SinonSi").
+	//Dit si la ligne reprÃ©sente un dÃ©but de segment conditionnel dÃ©coulant d'au moins une condition fausse
+	// en relanÃ§ant une autre condition ("SinonSi").
 	private boolean isElseIf() throws ConditionCrossLoopException, IfEndIfException, 
 	MissingParenthesisException, SyntaxException, UnknownVariableException, 
 	ArithmeticSyntaxException, TypeMissMatchException {
@@ -228,7 +228,7 @@ public class Executor {
 			else {
 				switch (this.conditionalStack.peek()) {
 				case READ_TRUE : 
-					//On a lu du code vrai, on a pas à retester si on veut exécuter le reste
+					//On a lu du code vrai, on a pas Ã  retester si on veut exÃ©cuter le reste
 					this.conditionalStack.set(this.conditionalStack.size() - 1, ReadMode.READ_BREAK);
 					break;
 				case READ_FALSE : 
@@ -243,8 +243,8 @@ public class Executor {
 		return rtr;
 	}
 
-	//Dit si la ligne représente un début de segment conditionnel 
-	// découlant d'au moins une condition fausse ("Sinon").
+	//Dit si la ligne reprÃ©sente un dÃ©but de segment conditionnel 
+	// dÃ©coulant d'au moins une condition fausse ("Sinon").
 	private boolean isElse() throws ConditionCrossLoopException, IfEndIfException {
 		boolean rtr = false;
 		if (
@@ -259,7 +259,7 @@ public class Executor {
 			else {
 				switch (this.conditionalStack.peek()) {
 				case READ_TRUE : 
-					//On a lu du code vrai, on a pas à retester si on veut exécuter le reste
+					//On a lu du code vrai, on a pas Ã  retester si on veut exÃ©cuter le reste
 					this.conditionalStack.set(this.conditionalStack.size() - 1, ReadMode.READ_BREAK);
 					break;
 				case READ_FALSE : 
@@ -271,7 +271,7 @@ public class Executor {
 		return rtr;
 	}
 
-	//Dit si la ligne représente une fin de segment conditionnel.
+	//Dit si la ligne reprÃ©sente une fin de segment conditionnel.
 	private boolean isEndIf() throws ConditionCrossLoopException, IfEndIfException {
 		boolean rtr = false;
 		if (this.txtLines[this.lineNbToRead].startsWith(WordsCondition.FIN_SI.getWord())) {
@@ -292,7 +292,7 @@ public class Executor {
 		return rtr;
 	}
 	
-	//Dit si la ligne représente un début de segment conditionnel répété (une boucle; TantQue).
+	//Dit si la ligne reprÃ©sente un dÃ©but de segment conditionnel rÃ©pÃ©tÃ© (une boucle; TantQue).
 	private boolean isWhile() throws MissingParenthesisException, SyntaxException, 
 	UnknownVariableException, ArithmeticSyntaxException, TypeMissMatchException {
 		boolean rtr = false;
@@ -317,22 +317,22 @@ public class Executor {
 		return rtr;
 	}
 
-	//Dit si la ligne représente une fin de segment conditionnel répété (une fin de boucle; FinTantQue).
+	//Dit si la ligne reprÃ©sente une fin de segment conditionnel rÃ©pÃ©tÃ© (une fin de boucle; FinTantQue).
 	private boolean isEndWhile() throws WhileEndWhileException, ConditionCrossLoopException, 
 	MissingParenthesisException, SyntaxException, UnknownVariableException, ArithmeticSyntaxException, 
 	TypeMissMatchException {
 		boolean rtr = false;
 		if (this.txtLines[this.lineNbToRead].startsWith(WordsLoop.FINTANTQUE.getWord())) {
-			//Si on a pas rencontré de début de boucle
+			//Si on a pas rencontrÃ© de dÃ©but de boucle
 			if (this.whileStack.isEmpty()) {
 				throw new WhileEndWhileException();
 			}
-			//Un if a été commencé mais pas fini
+			//Un if a Ã©tÃ© commencÃ© mais pas fini
 			else if (this.whileStack.peek().getAntiIf() != 0) {
 				throw new ConditionCrossLoopException();
 			}
 			//Si on est en mode de lecture READ_TRUE, et que la condition est vrai
-			// (les 2 premières conditions ne servent qu'à optimiser car un parsing est coûteux.
+			// (les 2 premiÃ¨res conditions ne servent qu'Ã  optimiser car un parsing est coÃ»teux.
 			else if (this.conditionalStack.isEmpty() == false &&
 					this.conditionalStack.peek() == ReadMode.READ_TRUE &&
 					Parser.condition(
@@ -341,7 +341,7 @@ public class Executor {
 				//On change le cours de la lecture (retour au while)
 				this.lineNbToRead = this.whileStack.peek().getLineNumber();
 			}
-			else { //L'exécution intra-boucle est terminée
+			else { //L'exÃ©cution intra-boucle est terminÃ©e
 				this.whileStack.pop();
 				this.conditionalStack.pop();
 			}
@@ -350,9 +350,9 @@ public class Executor {
 		return rtr;
 	}
 	
-	//=====FIN MÉTHODES DE DÉCOUPAGE
+	//=====FIN MÃ‰THODES DE DÃ‰COUPAGE
 	
-	//Affiche une valeur à l'utilisateur dans la fenêtre
+	//Affiche une valeur Ã  l'utilisateur dans la fenÃªtre
 	private void print(String toPrint) {
 		AppFrame.getInstance().getAppExecuteBar().displayNewLine(toPrint);
 	}
@@ -371,7 +371,7 @@ public class Executor {
 								Executor.READ_MSG + Executor.READ_INTEGER))).toString();
 				this.variables.setVariableByName(varName, in != null ? in : new Integer(0));
 			}
-			else { //On considère que c'est un String
+			else { //On considÃ¨re que c'est un String
 				String in = JOptionPane.showInputDialog(
 								Executor.READ_MSG + Executor.READ_STRING);
 				this.variables.setVariableByName(varName, in != null ? in : new String(""));
@@ -387,10 +387,10 @@ public class Executor {
 		AppFrame.getInstance().getAppExecuteBar().displayNewError(error, line + 1);
 	}
 	
-	//=========FIN DES MÉTHODES APPARTENANT DIRECTEMENT À LA CLASSE EXECUTOR
+	//=========FIN DES MÃ‰THODES APPARTENANT DIRECTEMENT Ã€ LA CLASSE EXECUTOR
 	
 	/**
-	 * Classe représentant l'objet utilisé pour gérer les boucles.
+	 * Classe reprÃ©sentant l'objet utilisÃ© pour gÃ©rer les boucles.
 	 */
 	private class WhileNode {
 		
@@ -398,9 +398,9 @@ public class Executor {
 		private String condition;
 		
 		/**
-		 * Prévient qu'un if/elseif/else/endif "enjambe" un TantQue.
-		 * S'incrémente lors d'un if,
-		 * se décrémente lors d'un endif,
+		 * PrÃ©vient qu'un if/elseif/else/endif "enjambe" un TantQue.
+		 * S'incrÃ©mente lors d'un if,
+		 * se dÃ©crÃ©mente lors d'un endif,
 		 * si == 0 lors d'un elseif/else, on throw l'exception ConditionCrossLoopException
 		 */
 		private int antiCrosser = 0;
@@ -432,14 +432,14 @@ public class Executor {
 	}
 
 	/**
-	 * Enumération représentant les types de lecture possibles.
-	 * Est utilisée pour gérer boucles & conditions.
+	 * EnumÃ©ration reprÃ©sentant les types de lecture possibles.
+	 * Est utilisÃ©e pour gÃ©rer boucles & conditions.
 	 */
 	private enum ReadMode {
 		//Types de lectures
 		READ_TRUE, //On lit le code normalement
-		READ_FALSE,//On lit le code sans exécuter
-		READ_BREAK;//On lit le code jusqu'à la borne de fin du If/While ayant mis le mode de lecture en BREAK
+		READ_FALSE,//On lit le code sans exÃ©cuter
+		READ_BREAK;//On lit le code jusqu'Ã  la borne de fin du If/While ayant mis le mode de lecture en BREAK
 	}
 
 }

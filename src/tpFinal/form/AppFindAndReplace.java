@@ -1,4 +1,4 @@
-package tpFinal.form;
+ï»¿package tpFinal.form;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -17,12 +17,12 @@ import javax.swing.WindowConstants;
 import tpFinal.model.textArea.FindAndReplace;
 
 /**
- * Cette classe affiche une boîte de dialogue 
+ * Cette classe affiche une boÃ®te de dialogue 
  * pour rechercher ou remplacer un terme.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class AppFindAndReplace extends JDialog implements ActionListener, KeyListener {
-	private final static String DEFAULT_TITLE = "Rechercher/Remplacer"; //Titre par défaut de l'application
+	private final static String DEFAULT_TITLE = "Rechercher/Remplacer"; //Titre par dÃ©faut de l'application
 	private final static String DEFAULT_LBL_SEARCH = "Recherche:";
 	private final static String DEFAULT_LBL_REPLACE = "Remplacer par:";
 	private final static String DEFAULT_ACT_SEARCH = "Search";
@@ -39,7 +39,7 @@ public class AppFindAndReplace extends JDialog implements ActionListener, KeyLis
 	private int index;
 
 	/**
-	 * Crée la fenêtre AppFindAndReplace
+	 * CrÃ©e la fenÃªtre AppFindAndReplace
 	 */
 	public AppFindAndReplace() {
 		super();
@@ -50,7 +50,7 @@ public class AppFindAndReplace extends JDialog implements ActionListener, KeyLis
 		this.index = 0;
 
 		//----------------------------------------
-		//Création du panelGauche et de ses objets
+		//CrÃ©ation du panelGauche et de ses objets
 		//----------------------------------------
 		JPanel panelGauche = new JPanel();
 		panelGauche.setLayout(new GridLayout(2, 2, 5, 5));
@@ -73,7 +73,7 @@ public class AppFindAndReplace extends JDialog implements ActionListener, KeyLis
 		this.add(panelGauche);
 
 		//----------------------------------------
-		//Création du panelDroite et de ses objets
+		//CrÃ©ation du panelDroite et de ses objets
 		//----------------------------------------
 		JPanel panelDroite = new JPanel();
 		panelDroite.setLayout(new GridLayout(4, 1, 5, 5));
@@ -88,7 +88,7 @@ public class AppFindAndReplace extends JDialog implements ActionListener, KeyLis
 
 		this.pack();
 
-		//Centre la fenêtre sur l'AppFrame 
+		//Centre la fenÃªtre sur l'AppFrame 
 		this.setLocationRelativeTo(AppFrame.getInstance());
 	}
 
@@ -107,7 +107,7 @@ public class AppFindAndReplace extends JDialog implements ActionListener, KeyLis
 	}
 
 	/**
-	 * Gère les cliques de tous les boutons de la fenêtre
+	 * GÃ¨re les cliques de tous les boutons de la fenÃªtre
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand() == AppFindAndReplace.DEFAULT_BTN_NEXT){
@@ -132,8 +132,8 @@ public class AppFindAndReplace extends JDialog implements ActionListener, KeyLis
 	}
 
 	/**
-	 * Écoute les événements des événements du clavier
-	 * Quitter la fenêtre lorsque ESCAPE est pressé
+	 * Ã‰coute les Ã©vÃ©nements des Ã©vÃ©nements du clavier
+	 * Quitter la fenÃªtre lorsque ESCAPE est pressÃ©
 	 */
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)

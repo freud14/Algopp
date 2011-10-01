@@ -1,4 +1,4 @@
-package tpFinal.model.textArea;
+ï»¿package tpFinal.model.textArea;
 
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
@@ -6,21 +6,21 @@ import javax.swing.event.UndoableEditListener;
 import tpFinal.form.AppFrame;
 
 /**
- * Classe qui écoute les éditions que l'on peut annuler
+ * Classe qui Ã©coute les Ã©ditions que l'on peut annuler
  * 
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  * @author http://www.lifl.fr/~secq/IUT/SWING/TP_Swing3.html
  */
 public class UndoRedoListener implements UndoableEditListener {
 
 	/**
-	 * Méthode qui reçoit un événement d'édition annulable en paramètre,
-	 * et mets à jour les variables avec ce paramètre.
+	 * MÃ©thode qui reÃ§oit un Ã©vÃ©nement d'Ã©dition annulable en paramÃ¨tre,
+	 * et mets Ã  jour les variables avec ce paramÃ¨tre.
 	 * 
-	 * @param e - Événement d'édition annulable
+	 * @param e - Ã‰vÃ©nement d'Ã©dition annulable
 	 */
 	public void undoableEditHappened(UndoableEditEvent e) {
-		//Retiens l'édition et mets à jour les menus.
+		//Retiens l'Ã©dition et mets Ã  jour les menus.
 		AppFrame.getInstance().getAppText().getUndo().addEdit(e.getEdit());
 		AppFrame.getInstance().getAppText().getUndoAction().updateUndoState();
 		AppFrame.getInstance().getAppText().getRedoAction().updateRedoState();

@@ -1,4 +1,4 @@
-package tpFinal.model.textArea;
+ï»¿package tpFinal.model.textArea;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -11,27 +11,27 @@ import tpFinal.form.AppFrame;
 /**
  * 	Classe avec les fonctions de recherches et de remplacements
  * 
- * Toutes les méthodes de cette classe sont statiques afin d'éviter de créer des objets
- * afin d'utiliser que des méthodes utilitaires.
+ * Toutes les mÃ©thodes de cette classe sont statiques afin d'Ã©viter de crÃ©er des objets
+ * afin d'utiliser que des mÃ©thodes utilitaires.
  * 
- *  @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ *  @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class FindAndReplace {
 
 	/**
-	 * Enlève les retours de chariot (\r) pour éviter les problèmes
+	 * EnlÃ¨ve les retours de chariot (\r) pour Ã©viter les problÃ¨mes
 	 *  de position de le AppText.
-	 * @param text	La chaîne à corriger
-	 * @return		La chaîne corrigée
+	 * @param text	La chaÃ®ne Ã  corriger
+	 * @return		La chaÃ®ne corrigÃ©e
 	 */
 	public static String removeCariageReturn(String text){
 		return text.replaceAll("\r", "");
 	}
 
 	/**
-	 * Sélectionne le mot recherché à la position recherché
-	 * @param searched 		Expression recherché
-	 * @param index		 	Index du terme recherché
+	 * SÃ©lectionne le mot recherchÃ© Ã  la position recherchÃ©
+	 * @param searched 		Expression recherchÃ©
+	 * @param index		 	Index du terme recherchÃ©
 	 */
 	public static void find(String searched, int index){
 		int i = 1;
@@ -63,13 +63,13 @@ public class FindAndReplace {
 	 * Affiche un MessageDialog pour dire que le terme n'est pas trouvable
 	 */
 	public static void noResult(){
-		JOptionPane.showMessageDialog(AppFrame.getInstance(), "Impossible de trouver le terme recherché");
+		JOptionPane.showMessageDialog(AppFrame.getInstance(), "Impossible de trouver le terme recherchÃ©");
 	}
 
 	/**
 	 * Fonction qui cherche le terme et le remplace
-	 * @param searched		Terme recherché	
-	 * @param newText		Terme à modifié
+	 * @param searched		Terme recherchÃ©	
+	 * @param newText		Terme Ã  modifiÃ©
 	 */
 	public static  void remplaceFind(String searched, String newText){
 		try{
@@ -95,14 +95,14 @@ public class FindAndReplace {
 	}
 
 	/**
-	 * Remplace tous les termes trouvés par le nouveau terme
-	 * @param searched		Terme recherché
-	 * @param newText		Terme à modifié
+	 * Remplace tous les termes trouvÃ©s par le nouveau terme
+	 * @param searched		Terme recherchÃ©
+	 * @param newText		Terme Ã  modifiÃ©
 	 */
 	public static void remplaceAll(String searched, String newText) {
 		int i = 0;
 		
-		//Parcours le texte pour calculer la quantité de fois que le terme est présent
+		//Parcours le texte pour calculer la quantitÃ© de fois que le terme est prÃ©sent
 		try{
 			Pattern pattern = Pattern.compile(searched);
 			Matcher matcher = pattern.matcher(
@@ -114,8 +114,8 @@ public class FindAndReplace {
 			JOptionPane.showMessageDialog(AppFrame.getInstance(), "Recherche invalide");
 		}
 		
-		//Effectue la modification et remets à jour le matcher à chaque boucle pour éviter les problèmes si le mot
-		// à remplacé n'est pas de la même longueur que le nouveau mot
+		//Effectue la modification et remets Ã  jour le matcher Ã  chaque boucle pour Ã©viter les problÃ¨mes si le mot
+		// Ã  remplacÃ© n'est pas de la mÃªme longueur que le nouveau mot
 		for (int j = 0; j < i; j++){
 			try{
 				Pattern pattern = Pattern.compile(searched);

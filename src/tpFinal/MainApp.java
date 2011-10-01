@@ -1,17 +1,17 @@
-package tpFinal;
+ï»¿package tpFinal;
 
 import javax.swing.UIManager;
 
 import tpFinal.form.AppFrame;
 
 /**
- * Main de l'application. Point d'entrée du programme.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * Main de l'application. Point d'entrÃ©e du programme.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class MainApp {
 
 	/**
-	 * @param args	Les arguments entrés pour le programme (non utilisé).
+	 * @param args	Les arguments entrÃ©s pour le programme (non utilisÃ©).
 	 */
 	public static void main(String[] args) {
 		try {

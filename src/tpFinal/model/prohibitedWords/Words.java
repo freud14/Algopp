@@ -1,9 +1,9 @@
-package tpFinal.model.prohibitedWords;
+ï»¿package tpFinal.model.prohibitedWords;
 
 /**
- * Interface des enums de mots réservés. 
- * Contient une méthode générique à ceux-ci.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * Interface des enums de mots rÃ©servÃ©s. 
+ * Contient une mÃ©thode gÃ©nÃ©rique Ã  ceux-ci.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public interface Words {
 

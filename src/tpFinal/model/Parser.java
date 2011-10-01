@@ -1,4 +1,4 @@
-package tpFinal.model;
+Ôªøpackage tpFinal.model;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -20,25 +20,25 @@ import tpFinal.model.prohibitedWords.WordsIntraCondition;
 import tpFinal.model.prohibitedWords.WordsLoop;
 
 /**
- * Cette classe gËre toutes les dÈclarations, affections et concatÈnation de variables.
- * Elle prend Ègalement en charge les conditions et les expressions mathÈmatiques. 
+ * Cette classe g√®re toutes les d√©clarations, affections et concat√©nation de variables.
+ * Elle prend √©galement en charge les conditions et les expressions math√©matiques. 
  * 
- * Toutes les mÈthodes de cette classe sont statiques afin d'Èviter de crÈer des objets
- * afin d'utiliser que des mÈthodes utilitaires.
+ * Toutes les m√©thodes de cette classe sont statiques afin d'√©viter de cr√©er des objets
+ * afin d'utiliser que des m√©thodes utilitaires.
  * 
- * @author Louis-…tienne Dorval, Alexis LÈgarÈ-Julien, FrÈdÈrik Paradis et Simon Perreault
+ * @author Louis-√âtienne Dorval, Alexis L√©gar√©-Julien, Fr√©d√©rik Paradis et Simon Perreault
  */
 public class Parser {
 
 	/**
-	 * ExÈcute une condition "Si" afin de savoir si la condition est valide.  Cette mÈthode
-	 * vÈrifie que la condition est valide.  Cette mÈthode prend Ègalement en charge
-	 * les opÈrations arithmÈtiques ainsi que les variables.
+	 * Ex√©cute une condition "Si" afin de savoir si la condition est valide.  Cette m√©thode
+	 * v√©rifie que la condition est valide.  Cette m√©thode prend √©galement en charge
+	 * les op√©rations arithm√©tiques ainsi que les variables.
 	 * 
-	 * Bogue Connu: Un condition du type (bob = 3+(5+6 ET 4-2) = martin) serait acceptÈe.
+	 * Bogue Connu: Un condition du type (bob = 3+(5+6 ET 4-2) = martin) serait accept√©e.
 	 * 
 	 * @param condition La condition en entier
-	 * @param environment L'environnement du programme lors de l'ÈxÈcution de la condition.
+	 * @param environment L'environnement du programme lors de l'√©x√©cution de la condition.
 	 * @return Retourne vrai si la condition est valide sinon faux.
 	 * @throws MissingParenthesisException
 	 * @throws SyntaxException
@@ -52,12 +52,12 @@ public class Parser {
 
 		condition = condition.trim().toLowerCase();
 
-		//Validation des parenthËses
+		//Validation des parenth√®ses
 		if (!Parser.isValidParenthesis(condition)) {
 			throw new MissingParenthesisException();
 		}
 
-		//Les autres erreurs seront trouvÈ par ma regex
+		//Les autres erreurs seront trouv√© par ma regex
 		String regVariable = "[\\s\\(]*([\"].*[\"]|(\\-)?[\\-\\s]*[a-z0-9_]+([\\s\\)]*[\\+\\-\\*/%\\.][\\-\\s]*[\\s\\(]*[a-z0-9_]+)*)[\\s\\)]*";
 		String regex = "[\\s\\(]*"+regVariable+"(<>|<=|>=|=|<|>)"+regVariable+"[\\s\\)]*(( )*(et|ou)( )*[\\s\\(]*"+regVariable+"(<>|<=|>=|=|<|>)"+regVariable+"[\\s\\)]*)*";
 		Pattern pattern = Pattern.compile(regex);  
@@ -100,15 +100,15 @@ public class Parser {
 			}
 		}
 
-		//…valuation de la condition		
+		//√âvaluation de la condition		
 		valid = Parser.postfixeEvalCondition(Parser.infixeToPostfix(Parser.evalCondition(condition, environment)));
 		
 		return valid;
 	}
 
 	/**
-	 * MÈthode qui remplace les conditions par des vrais ou faux.
-	 * @param condition		La condition ‡ Èvaluer
+	 * M√©thode qui remplace les conditions par des vrais ou faux.
+	 * @param condition		La condition √† √©valuer
 	 * @return				Vrai si la condition est valide, faux sinon
 	 * @throws ArithmeticSyntaxException 
 	 * @throws UnknownVariableException 
@@ -116,14 +116,14 @@ public class Parser {
 	 * @throws TypeMissMatchException 
 	 */
 	private static String evalCondition(String condition, Environment environment) throws SyntaxException, UnknownVariableException, ArithmeticSyntaxException, TypeMissMatchException {
-		//On ne dÈcoupe pas la mÈthode afin de ne pas crÈer de fonctions 
-		//ayant en paramËtre un trop grand nombre de paramËtre.
+		//On ne d√©coupe pas la m√©thode afin de ne pas cr√©er de fonctions 
+		//ayant en param√®tre un trop grand nombre de param√®tre.
 		int index = 0;
 		char character;
 		boolean inString = false;
 		for (int i = 0; i < condition.length(); i++) {
 			character = condition.charAt(i);
-			//…value si on est dedans une string
+			//√âvalue si on est dedans une string
 			if (character == '"') {
 				inString = !inString;
 			}
@@ -149,7 +149,7 @@ public class Parser {
 					String rightSide = "";
 					
 					
-					//On a trouvÈ le milieu d'une condition
+					//On a trouv√© le milieu d'une condition
 					int cpt = 0;
 					boolean end = false;
 					
@@ -161,7 +161,7 @@ public class Parser {
 							cpt++;
 						}
 						else if (condition.charAt(index) == '(') {
-							//On a attends une parenthËse que l'on a pas ouvert
+							//On a attends une parenth√®se que l'on a pas ouvert
 							if (cpt == 0) { 
 								end = true;
 								index++;
@@ -182,7 +182,7 @@ public class Parser {
 						}
 					}
 					
-					//On a dÈpassÈ
+					//On a d√©pass√©
 					if (index == -1) {
 						index = 0;
 					}
@@ -190,7 +190,7 @@ public class Parser {
 					startCondition = index + 1;
 					leftSide = Parser.solveCondition(condition.substring(index, i).trim(), environment);
 					
-					//RÈinitialise les variables
+					//R√©initialise les variables
 					end = false;
 
 					cpt = 0;
@@ -210,7 +210,7 @@ public class Parser {
 							cpt++;
 						}
 						else if (condition.charAt(index) == ')') {
-							//On a attends une parenthËse que l'on a pas ouvert
+							//On a attends une parenth√®se que l'on a pas ouvert
 							if (cpt == 0) { 
 								end = true;
 							}
@@ -335,10 +335,10 @@ public class Parser {
 
 
 	/**
-	 * MÈthode qui rÈsous un cÙtÈ d'une condition et retourne la valeur ‡ sa plus simple expression.
-	 * @param condition		La condition a rÈsoudre.
+	 * M√©thode qui r√©sous un c√¥t√© d'une condition et retourne la valeur √† sa plus simple expression.
+	 * @param condition		La condition a r√©soudre.
 	 * @param environment	Le contenant des variables.
-	 * @return La String ‡ l'Ètat plus simple
+	 * @return La String √† l'√©tat plus simple
 	 * @throws SyntaxException 
 	 * @throws ArithmeticSyntaxException 
 	 * @throws UnknownVariableException 
@@ -378,9 +378,9 @@ public class Parser {
 
 	/**
 	 * Remplace les variables contenues dans une condition pour leur vrai valeur.
-	 * @param line La line ‡ remplacer
+	 * @param line La line √† remplacer
 	 * @param environment L'environnement de variable
-	 * @return La String avec les variables remplacÈes
+	 * @return La String avec les variables remplac√©es
 	 * @throws UnknownVariableException
 	 */
 	private static String replaceVariable(String line, Environment environment) throws UnknownVariableException {
@@ -388,7 +388,7 @@ public class Parser {
 		
 		for (int i = 0; i < line.length(); i++) {
 			StringBuilder varName = new StringBuilder();
-			//…value si on est dedans une string
+			//√âvalue si on est dedans une string
 			if (line.charAt(i) == '"') {
 				inString = !inString;
 			}
@@ -400,7 +400,7 @@ public class Parser {
 					!Character.isLetter(line.charAt(i - 1)) &&
 					!Character.isDigit(line.charAt(i - 1))) ||
 					i == 0)) {
-				while (i < line.length() &&  //Recherche un dÈbut de mot afin de cernÈ une variable
+				while (i < line.length() &&  //Recherche un d√©but de mot afin de cern√© une variable
 						(Character.isLetter(line.charAt(i)) ||
 								Character.isDigit(line.charAt(i)) ||
 								line.charAt(i) == '_')) {
@@ -416,23 +416,23 @@ public class Parser {
 					!varName.toString().equals("et") && 
 					!varName.toString().equals("ou") &&
 					!varName.toString().equals(WordsBoolean.FAUX.getWord()) &&
-					!varName.toString().equals(WordsBoolean.VRAI.getWord())) {  //Si un mot ‡ ÈtÈ trouvÈ
+					!varName.toString().equals(WordsBoolean.VRAI.getWord())) {  //Si un mot √† √©t√© trouv√©
 
 				//System.out.println(varName.toString() + "   " + environment.getVariableByName(varName.toString()));
 				Object varValue = environment.getVariableByName(varName.toString());
 
-				//Replace l'index au dÈbut du mot
+				//Replace l'index au d√©but du mot
 				i = i - varName.length();
 
 				if (varValue == null) {
 					throw new UnknownVariableException(varName.toString());
 				}
-				else if (varValue instanceof String) { //Une chaine de caractËres
+				else if (varValue instanceof String) { //Une chaine de caract√®res
 					line = line.substring(0, i) + "\"" + varValue.toString() + "\"" + line.substring(i + varName.toString().length());
 					i += 2 + varValue.toString().length();
 				}
-				else if (varValue instanceof Boolean){ //Un boolÈen
-					//Pour une rÈecriture en franÁais
+				else if (varValue instanceof Boolean){ //Un bool√©en
+					//Pour une r√©ecriture en fran√ßais
 					if (String.valueOf(varValue).equals("true")) {
 						line = line.substring(0, i) + WordsBoolean.VRAI.getWord() + line.substring(i + varName.toString().length());
 						line = line.replace(varName.toString(), WordsBoolean.VRAI.getWord());
@@ -453,8 +453,8 @@ public class Parser {
 	}
 
 	/**
-	 * Ajoute la variable ‡ l'environnement.
-	 * @param line	Le texte de la ligne pour dÈclarer la variable.
+	 * Ajoute la variable √† l'environnement.
+	 * @param line	Le texte de la ligne pour d√©clarer la variable.
 	 * @param env	Le contenant des variables.
 	 * @throws SyntaxException
 	 * @throws UnknownVariableException
@@ -465,7 +465,7 @@ public class Parser {
 	 * @throws TypeMissMatchException 
 	 */
 	protected static void declaration(String declaration, Environment env) throws SyntaxException, UnknownVariableException, VariableRedefinitionException, MissingParenthesisException, ArithmeticSyntaxException, UseOfReservedWord, TypeMissMatchException {
-		//On vÈrifie la validitÈ de la dÈclaration
+		//On v√©rifie la validit√© de la d√©claration
 		String assign = "[\\s]*[A-Za-z_][A-Za-z0-9_]*[\\s]*(<\\-).*";
 		String regex = "(" + WordsDeclaration.CHAINE.getWord() + 
 		"|" + WordsDeclaration.ENTIER.getWord() + 
@@ -484,10 +484,10 @@ public class Parser {
 
 		Parser.reactToRestrictedWords(name);
 
-		//On regarde le type et on ajoute la variable ‡ l'environnement.
+		//On regarde le type et on ajoute la variable √† l'environnement.
 		String s = declaration.trim().toLowerCase();
 		Object result = null;
-		//Si c'est une chaine de caractËre...
+		//Si c'est une chaine de caract√®re...
 		if(s.startsWith(WordsDeclaration.CHAINE.getWord())) {
 			result = Parser.stringConcat(afterEquals, env);
 		}
@@ -495,7 +495,7 @@ public class Parser {
 		else if(s.startsWith(WordsDeclaration.ENTIER.getWord())) {
 			result = Parser.evalMathOperation(afterEquals, env);
 		}
-		//Si c'est un boolÈen
+		//Si c'est un bool√©en
 		else if(s.startsWith(WordsDeclaration.BOOLEEN.getWord())) {
 			String bool = afterEquals.trim();
 			bool = Parser.replaceVariable(bool, env);
@@ -516,9 +516,9 @@ public class Parser {
 	}
 
 	/**
-	 * MÈthode lanÁant l'exception UseOfReservedWord si la chaÓne passÈe 
-	 * en paramËtre est un mot rÈservÈe
-	 * @param s Le mot ‡ vÈrifier
+	 * M√©thode lan√ßant l'exception UseOfReservedWord si la cha√Æne pass√©e 
+	 * en param√®tre est un mot r√©serv√©e
+	 * @param s Le mot √† v√©rifier
 	 * @throws UseOfReservedWord
 	 */
 	private static void reactToRestrictedWords(String s) throws UseOfReservedWord {
@@ -556,7 +556,7 @@ public class Parser {
 
 	/**
 	 * Modifie la valeur d'une variable.
-	 * @param line	Le texte de la ligne pour modifiÈ la variable.
+	 * @param line	Le texte de la ligne pour modifi√© la variable.
 	 * @param env	Le contenant des variables.
 	 * @throws SyntaxException
 	 * @throws UnknownVariableException
@@ -565,7 +565,7 @@ public class Parser {
 	 * @throws TypeMissMatchException 
 	 */
 	protected static void assignment(String line, Environment env) throws SyntaxException, UnknownVariableException, MissingParenthesisException, ArithmeticSyntaxException, TypeMissMatchException {
-		//On vÈrifie la validitÈ de l'assignement
+		//On v√©rifie la validit√© de l'assignement
 		String assign = "[\\s]*[A-Za-z_][A-Za-z0-9_]*[\\s]*(<\\-).*";
 		Pattern pattern = Pattern.compile(assign);  
 		Matcher matcher = pattern.matcher(line);  
@@ -573,25 +573,25 @@ public class Parser {
 			throw new SyntaxException();
 		}
 
-		//On prend le nom et la valeur ‡ affecter la variable
+		//On prend le nom et la valeur √† affecter la variable
 		String name = line.substring(0, line.indexOf("<-")).trim();
 		String var = Parser.trimEquals(line);
 
-		//Prend la variable pour connaÓtre son type
+		//Prend la variable pour conna√Ætre son type
 		Object obj = env.getVariableByName(name);
 		if(obj != null) {
 			if(obj instanceof String) {
-				//Si c'Ètait une String, on appelle la fonction pour concatÈner
+				//Si c'√©tait une String, on appelle la fonction pour concat√©ner
 				String concat = Parser.stringConcat(var, env);
 				env.setVariableByName(name, concat);
 			}
 			else if(obj instanceof Integer) {
-				//Si c'Ètait un entier, on Èvalue l'expression mathÈmatique
+				//Si c'√©tait un entier, on √©value l'expression math√©matique
 				Integer value = Parser.evalMathOperation(var, env);
 				env.setVariableByName(name, value);
 			}
 			else if(obj instanceof Boolean) {
-				//Si c'est un boolÈen, on regarde si c'est juste un boolÈen unique
+				//Si c'est un bool√©en, on regarde si c'est juste un bool√©en unique
 				//ou une condition.
 				String bool = var.trim();
 				bool = Parser.replaceVariable(bool, env);
@@ -615,9 +615,9 @@ public class Parser {
 	}
 
 	/**
-	 * Donne tout le texte aprËs le premier <- de la string en paramËtre
+	 * Donne tout le texte apr√®s le premier <- de la string en param√®tre
 	 * @param instruction La ligne d'assignation
-	 * @return Le texte aprËs le premier <- de la string en paramËtre
+	 * @return Le texte apr√®s le premier <- de la string en param√®tre
 	 */
 	private static String trimEquals(String instruction) {
 		String retour = instruction.substring(instruction.indexOf("<-") + 2);
@@ -626,12 +626,12 @@ public class Parser {
 	}
 
 	/**
-	 * MÈthode retournant une chaÓne reprÈsentant la concatÈnation de celle du pseudo-code
-	 * 	sur la ligne donnÈe.
-	 * @param line	Le texte de la ligne contenant une plusieurs chaÓne de caractËres
+	 * M√©thode retournant une cha√Æne repr√©sentant la concat√©nation de celle du pseudo-code
+	 * 	sur la ligne donn√©e.
+	 * @param line	Le texte de la ligne contenant une plusieurs cha√Æne de caract√®res
 	 * 				en pseudo-code.
 	 * @param env	Le contenant des variables.
-	 * @return	La chaÓne de caractËres rÈsultante de celle en pseudo-code
+	 * @return	La cha√Æne de caract√®res r√©sultante de celle en pseudo-code
 	 * @throws UnknownVariableException
 	 * @throws SyntaxException
 	 * @throws ArithmeticSyntaxException
@@ -640,7 +640,7 @@ public class Parser {
 		String retour = "";
 		//On valide la string
 		if(Parser.validConcatSyntax(line)) {
-			//On divise la String pour obtenir chacune des parties de la concatÈnation
+			//On divise la String pour obtenir chacune des parties de la concat√©nation
 			LinkedList<String> list = Parser.splitConcatString(line, env);
 			StringBuilder stringFinal = new StringBuilder("");
 			for(String s : list) {
@@ -648,7 +648,7 @@ public class Parser {
 				if(s.toString().startsWith("\"")) {
 					stringFinal.append(s.substring(1, s.length() - 1));
 				}
-				//Si c'est un boolÈen
+				//Si c'est un bool√©en
 				else if(s.toLowerCase().equals(WordsBoolean.VRAI.getWord()) || s.toLowerCase().equals(WordsBoolean.FAUX.getWord())) {
 					stringFinal.append(s.toLowerCase());
 				}
@@ -666,11 +666,11 @@ public class Parser {
 	}
 
 	/**
-	 * MÈthode qui divise une chaine valide de concatÈnation. Le signe de concatÈnation
+	 * M√©thode qui divise une chaine valide de concat√©nation. Le signe de concat√©nation
 	 * est le point(.).
-	 * @param s La chaine ‡ concatÈner
+	 * @param s La chaine √† concat√©ner
 	 * @param env L'environnement contenant les variables actuelles
-	 * @return Un tableau de string contenant les parties de la chaÓne
+	 * @return Un tableau de string contenant les parties de la cha√Æne
 	 * @throws UnknownVariableException
 	 */
 	private static LinkedList<String> splitConcatString(String s, Environment env) throws UnknownVariableException {
@@ -687,7 +687,7 @@ public class Parser {
 			j++;
 
 			switch(letter) {
-			case '"': //Si c'est un guillemet, c'est un dÈbut ou de fin de string
+			case '"': //Si c'est un guillemet, c'est un d√©but ou de fin de string
 				inString = !inString;
 				temp.append(letter);
 				if(!inString) {
@@ -696,20 +696,20 @@ public class Parser {
 					temp = new StringBuilder("");
 				}
 				break;
-			case '\\': //Si c'est un barre oblique arriËre...
+			case '\\': //Si c'est un barre oblique arri√®re...
 				if(inString) {
-					//On affiche seulement le prochain caractËre
+					//On affiche seulement le prochain caract√®re
 					temp.append(word[j]);
-					//On passe par dessus le prochain caractËre.
+					//On passe par dessus le prochain caract√®re.
 					j++;
 				}
 				break;
-			case '.': //Si c'est un point (signe de concatÈnation)
+			case '.': //Si c'est un point (signe de concat√©nation)
 				if(inString) {//Si on est dans une string, on l'ajoute.
 					temp.append(letter);
 				}
 				else if(inVariable) {
-					//Sinon, on ajoute la variable ‡ la liste
+					//Sinon, on ajoute la variable √† la liste
 					list.add(temp.toString().trim());
 					temp = new StringBuilder("");
 					inVariable = false;
@@ -726,7 +726,7 @@ public class Parser {
 				}
 				temp.append(letter);
 				if(j == word.length) {
-					//Si c'est le dernier caractËre, on ajoute le dernier "temp" dans la liste
+					//Si c'est le dernier caract√®re, on ajoute le dernier "temp" dans la liste
 					list.add(temp.toString().trim());
 				}
 			}
@@ -736,9 +736,9 @@ public class Parser {
 	}
 
 	/**
-	 * Valide la syntaxe d'une concatÈnation.
-	 * @param s La chaine de concatÈnation(s)
-	 * @return Vrai si la chaÓne de concatÈnation est valide; sinon faux.
+	 * Valide la syntaxe d'une concat√©nation.
+	 * @param s La chaine de concat√©nation(s)
+	 * @return Vrai si la cha√Æne de concat√©nation est valide; sinon faux.
 	 */
 	private static boolean validConcatSyntax(String s) {
 		boolean inString = false;
@@ -752,10 +752,10 @@ public class Parser {
 			i++;
 
 			switch(letter) {
-			case '"': //Si c'est un guillemet, c'est un dÈbut ou de fin de string
+			case '"': //Si c'est un guillemet, c'est un d√©but ou de fin de string
 				inString = !inString;
 				if(!inString) {
-					//Si on vient de sortir d'une string, on attend le signe des concatÈnations
+					//Si on vient de sortir d'une string, on attend le signe des concat√©nations
 					waitForPlus = true;
 				}
 				else if(inString && waitForPlus) {
@@ -763,9 +763,9 @@ public class Parser {
 					error = true;
 				}
 				break;
-			case '\\': //Si c'est un barre oblique arriËre...
+			case '\\': //Si c'est un barre oblique arri√®re...
 				if(inString) {
-					//Si on est dans une chaine, on passe au prochain caractËre.
+					//Si on est dans une chaine, on passe au prochain caract√®re.
 					i++;
 				}
 				else {
@@ -773,24 +773,24 @@ public class Parser {
 					error = true;
 				}
 				break;
-			case '.': //Si c'est un point (signe de concatÈnation)
+			case '.': //Si c'est un point (signe de concat√©nation)
 				if(!inString && waitForPlus) {
 					//Si on n'est pas dans une chaine, on n'attend
-					//plus pour le signe de concatÈnation et on n'est 
+					//plus pour le signe de concat√©nation et on n'est 
 					//plus dans une variable
 					waitForPlus = false;
 					inVariable = false;
 				}
 				else if(!inString && !waitForPlus) {
 					//Si on est pas dans une chaine et qu'on
-					//attend pas pour un signe de concatÈnation
+					//attend pas pour un signe de concat√©nation
 					error = true;
 				}
 				break;
 			case ' ':
 				if(inVariable) {
-					//Si on Ètait dans une variable, on attend pour un 
-					//signe de concatÈnation et on n'est plus dans une
+					//Si on √©tait dans une variable, on attend pour un 
+					//signe de concat√©nation et on n'est plus dans une
 					//variable
 					waitForPlus = true;
 					inVariable = false;
@@ -798,15 +798,15 @@ public class Parser {
 				break;
 			default:
 				if(!inString && !waitForPlus) {
-					//Si on Ètait pas dans une chaine et qu'on attendait pas
-					//pour un signe de concatÈnation, on est alors dans une 
-					//variable et on attend un signe de concatÈnation.
+					//Si on √©tait pas dans une chaine et qu'on attendait pas
+					//pour un signe de concat√©nation, on est alors dans une 
+					//variable et on attend un signe de concat√©nation.
 					waitForPlus = true;
 					inVariable = true;
 				}
 				else if(!inString && !inVariable && waitForPlus) {
 					//Si on est dans une string ou dans une variable et qu'on attend pour un
-					//signe de concatÈnation, on est dans une expression mathÈmatique
+					//signe de concat√©nation, on est dans une expression math√©matique
 					switch(letter) {
 					case '(':
 					case ')':
@@ -834,17 +834,17 @@ public class Parser {
 	}
 
 	/**
-	 * Algorithme qui transforme un calcul ou une condition de forme infixÈe vers une forme 
-	 * postfixÈe.  Cet algorithme prend en compte les parenthËses et prend pour acquis que 
-	 * la chaine est valide.  La chaine doit contenir uniquement des opÈrateurs et des
+	 * Algorithme qui transforme un calcul ou une condition de forme infix√©e vers une forme 
+	 * postfix√©e.  Cet algorithme prend en compte les parenth√®ses et prend pour acquis que 
+	 * la chaine est valide.  La chaine doit contenir uniquement des op√©rateurs et des
 	 * nombres entiers.
 	 * 
-	 * La forme postfixÈe sÈpare les diffÈrents opÈrateurs et les nombre par une virgule.
-	 * La forme postfixÈe peut commencer par une virgule.
+	 * La forme postfix√©e s√©pare les diff√©rents op√©rateurs et les nombre par une virgule.
+	 * La forme postfix√©e peut commencer par une virgule.
 	 * 
 	 * Source: http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
-	 * @param infix		La chaine sous forme infixÈe.
-	 * @return			Une chaine sous form postfixÈe
+	 * @param infix		La chaine sous forme infix√©e.
+	 * @return			Une chaine sous form postfix√©e
 	 */
 	private static String infixeToPostfix(String infix) {
 
@@ -852,14 +852,14 @@ public class Parser {
 		StringBuilder postfix = new StringBuilder();
 
 
-		//On enlËve les espaces
+		//On enl√®ve les espaces
 		infix = infix.replaceAll(" ", "");
 		//Remplacement de tout les signes
 		infix = infix.replaceAll("--", "+");
 		infix = infix.replaceAll("\\+-", "-");
 		infix = infix.replaceAll("\\*-", "*-1*");
 
-		//VÈrifie qu'il n'y a pas d'erreur du genre 5/+5
+		//V√©rifie qu'il n'y a pas d'erreur du genre 5/+5
 		//A cause de la transformation de 5/--5 -> 5/+5
 		for (int i = 0; i < infix.length(); i++) {
 			if ((i == 0 &&
@@ -873,7 +873,7 @@ public class Parser {
 			}
 		}
 
-//				//Ajoute un zÈro pour bien gËre la nÈgation en dÈbut de dÈclaration
+//				//Ajoute un z√©ro pour bien g√®re la n√©gation en d√©but de d√©claration
 //				postfix = postfix.append("0,");
 
 		char character;
@@ -934,10 +934,10 @@ public class Parser {
 					postfix = postfix.append(stack.pop());
 				}
 				if (!stack.isEmpty()) {
-					stack.pop(); //Pop de la parenthËse ouvrante
+					stack.pop(); //Pop de la parenth√®se ouvrante
 				}
 				break;
-			default: //un caractËre autre
+			default: //un caract√®re autre
 				if (isWordFinished) {
 					postfix = postfix.append(',');
 					isWordFinished = false;
@@ -955,8 +955,8 @@ public class Parser {
 	}
 
 	/*
-	 * Fonction qui retourne la prioritÈ d'un opÈrateur afin
-	 * de pouvoir bien exÈcuter la prioritÈ d'opÈration.
+	 * Fonction qui retourne la priorit√© d'un op√©rateur afin
+	 * de pouvoir bien ex√©cuter la priorit√© d'op√©ration.
 	 */
 	private static int getPrority (char operator) {
 		int tmp;
@@ -986,13 +986,13 @@ public class Parser {
 
 
 	/**
-	 * Algorithme qui Èvalue une condition sous forme postfixÈe.
+	 * Algorithme qui √©value une condition sous forme postfix√©e.
 	 * Cet algorithme prend en compte que la chaine est valide et que
-	 * tous les boolÈens et opÈrateurs sont sÈparÈs d'une virgule.
+	 * tous les bool√©ens et op√©rateurs sont s√©par√©s d'une virgule.
 	 * 
 	 * Source: http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
-	 * @param postfix		La chaine sous la forme postfixÈe
-	 * @return				Le rÈsultat sous la forme d'une chaine.
+	 * @param postfix		La chaine sous la forme postfix√©e
+	 * @return				Le r√©sultat sous la forme d'une chaine.
 	 * @see	postfixeEvalMath
 	 * @see infixeToPostfix
 	 */
@@ -1030,13 +1030,13 @@ public class Parser {
 	}
 
 	/**
-	 * Algorithme qui Èvalue une Èquation mathÈmatique sous forme postfixÈe.
+	 * Algorithme qui √©value une √©quation math√©matique sous forme postfix√©e.
 	 * Cet algorithme prend en compte que la chaine est valide et que
-	 * tous les nombres et opÈrateurs sont sÈparÈs d'une virgule.
+	 * tous les nombres et op√©rateurs sont s√©par√©s d'une virgule.
 	 *  
 	 * Source: http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
-	 * @param postfix		La chaine sous la forme postfixÈe
-	 * @return				Le rÈsultat sous la forme d'une chaine.
+	 * @param postfix		La chaine sous la forme postfix√©e
+	 * @return				Le r√©sultat sous la forme d'une chaine.
 	 * @see	postfixeEvalCondition
 	 * @see infixeToPostfixe
 	 */
@@ -1090,10 +1090,10 @@ public class Parser {
 	}
 
 	/**
-	 * MÈthode qui Èvalue une opÈration  mathÈmatique simple ou compliquÈe.
+	 * M√©thode qui √©value une op√©ration  math√©matique simple ou compliqu√©e.
 	 *
-	 * @param operation						Le calcul ‡ exÈcuter.
-	 * @return								La rÈponse au calcul
+	 * @param operation						Le calcul √† ex√©cuter.
+	 * @return								La r√©ponse au calcul
 	 * @throws ArithmeticSyntaxException 	Si la syntaxe de l'expression est invalide
 	 * @throws UnknownVariableException 
 	 */
@@ -1107,7 +1107,7 @@ public class Parser {
 	}
 
 	/**
-	 * Algorithme qui valide si une expression est une expression mathÈmatique valide ‡
+	 * Algorithme qui valide si une expression est une expression math√©matique valide √†
 	 * l'aide d'un automate.
 	 * 
 	 * Source : http://recursivite.developpez.com/?page=page_8#LVII-C-4
@@ -1122,26 +1122,26 @@ public class Parser {
 		//Algorithme de validation par automate :D
 		int [][] automate =
 			/* 	 0 1 2 3 4 5 6 7 8 9 + - * % / ( ) */
-		{ 	{2,2,2,2,2,2,2,2,2,2,-1,1,-1,-1,-1,0,-1}, 		//Ètat 0
-				{2,2,2,2,2,2,2,2,2,2,-1,1,-1,-1,-1,0,-1}, 		//Ètat 1
-				{2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,-1,3}, 			//Ètat 2
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,1,4,4,4,-1,3}, //Ètat 3
-				{2,2,2,2,2,2,2,2,2,2,-1,1,-1,-1,-1,0,-1}  		//Ètat 4
+		{ 	{2,2,2,2,2,2,2,2,2,2,-1,1,-1,-1,-1,0,-1}, 		//√©tat 0
+				{2,2,2,2,2,2,2,2,2,2,-1,1,-1,-1,-1,0,-1}, 		//√©tat 1
+				{2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,-1,3}, 			//√©tat 2
+				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,1,4,4,4,-1,3}, //√©tat 3
+				{2,2,2,2,2,2,2,2,2,2,-1,1,-1,-1,-1,0,-1}  		//√©tat 4
 		};
-		//L'Ètat
+		//L'√©tat
 		int state = 0;
-		//Compteur pour les parenthËses
+		//Compteur pour les parenth√®ses
 		int cpt = 0;
 		//Index du curseur
 		int i = 0;
 		//Position d'une lettre dans line
 		int position = 0;
-		//Le charactere de la chaÓne
+		//Le charactere de la cha√Æne
 		char character;
 
 		do {
 			character = operation.charAt(i);
-			//Balancer les parenthËses
+			//Balancer les parenth√®ses
 			if (character == '(') {
 				cpt++;
 			}
@@ -1151,8 +1151,8 @@ public class Parser {
 
 			if (cpt >= 0) {
 				position = line.indexOf(character);
-				if (position >= 0) { //C'est un caractËre valide
-					//On passe au prochaine Ètat
+				if (position >= 0) { //C'est un caract√®re valide
+					//On passe au prochaine √©tat
 					state = automate[state][position];	
 				}
 			}
@@ -1167,7 +1167,7 @@ public class Parser {
 		}
 
 		if (state == -1 ||
-				state == 0 ||	//…tat non terminal
+				state == 0 ||	//√âtat non terminal
 				state == 1||
 				state == 4 ||
 				position == -1) {
@@ -1178,8 +1178,8 @@ public class Parser {
 	}
 
 	/*
-	 * MÈthode qui valide si le nombre de parenthËses ouvrantes est Ègale au nombre
-	 * de parenthËses fermantes.
+	 * M√©thode qui valide si le nombre de parenth√®ses ouvrantes est √©gale au nombre
+	 * de parenth√®ses fermantes.
 	 */
 	private static boolean isValidParenthesis(String operation) {
 

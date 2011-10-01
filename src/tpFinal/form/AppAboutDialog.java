@@ -1,4 +1,4 @@
-package tpFinal.form;
+ï»¿package tpFinal.form;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -16,24 +16,24 @@ import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
 /**
- * Cette classe affiche une boîte de dialogue 
- * présentant l’application, le nom des 
- * programmeurs et illustrée d’une image.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * Cette classe affiche une boÃ®te de dialogue 
+ * prÃ©sentant lâ€™application, le nom des 
+ * programmeurs et illustrÃ©e dâ€™une image.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  * */
 public class AppAboutDialog extends JDialog implements ActionListener {
 
-	private final static String DEFAULT_TITLE = "À propos..."; //Titre par défaut de l'application
+	private final static String DEFAULT_TITLE = "Ã€ propos..."; //Titre par dÃ©faut de l'application
 	private final static String DEFAULT_OK = "OK"; //Label du bouton OK
 	private static final String ABOUT_ICON = "../ressources/about.gif"; //Chemin de l'image About
 	
-	//Texte de la fenêtre À propos...
-	private static final String MESSAGE = "Cet outil de développement d'algorithme a été développé par Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault. Il est présentement en état de prototype et ne devrait pas servir dans un cadre de production. Pour connaître le fonctionnement de l'outil, voir l'aide dans le menu « ? ».\r\n\r\nCet outil est sous licence GNU GPL. Pour avoir des détails sur la licence, rendez vous sur le site gnu.org.";
+	//Texte de la fenÃªtre Ã€ propos...
+	private static final String MESSAGE = "Cet outil de dÃ©veloppement d'algorithme a Ã©tÃ© dÃ©veloppÃ© par Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault. Il est prÃ©sentement en Ã©tat de prototype et ne devrait pas servir dans un cadre de production. Pour connaÃ®tre le fonctionnement de l'outil, voir l'aide dans le menu Â« ? Â».\r\n\r\nCet outil est sous licence GNU GPL. Pour avoir des dÃ©tails sur la licence, rendez vous sur le site gnu.org.";
 	
-	private static final Dimension DEFAULT_SIZE = new Dimension(400, 150); //Taille par défaut de la fenêtre
+	private static final Dimension DEFAULT_SIZE = new Dimension(400, 150); //Taille par dÃ©faut de la fenÃªtre
 
 	/**
-	 * Crée l'interface de la fenêtre À propos...
+	 * CrÃ©e l'interface de la fenÃªtre Ã€ propos...
 	 */
 	public AppAboutDialog() {
 		super();
@@ -43,7 +43,7 @@ public class AppAboutDialog extends JDialog implements ActionListener {
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setModal(true);
 
-		//Création du Layout
+		//CrÃ©ation du Layout
 		this.setLayout(new BorderLayout());
 
 		//Label et image 
@@ -59,7 +59,7 @@ public class AppAboutDialog extends JDialog implements ActionListener {
 		ImageIcon img = new ImageIcon(this.getClass().getResource(AppAboutDialog.ABOUT_ICON));
 		JLabel lblImage = new JLabel(img);
 
-		//Création du bouton OK
+		//CrÃ©ation du bouton OK
 		JButton boutonOK = new JButton(AppAboutDialog.DEFAULT_OK);
 		boutonOK.setActionCommand(AppAboutDialog.DEFAULT_OK);
 		boutonOK.addActionListener(this);
@@ -75,7 +75,7 @@ public class AppAboutDialog extends JDialog implements ActionListener {
 	}
 
 	/**
-	 * Gère le clique sur le bouton OK
+	 * GÃ¨re le clique sur le bouton OK
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals(AppAboutDialog.DEFAULT_OK)) {

@@ -1,4 +1,4 @@
-package tpFinal.model;
+Ôªøpackage tpFinal.model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,24 +12,24 @@ import javax.swing.JOptionPane;
 import tpFinal.form.AppFrame;
 
 /**
- * Classe qui fournis des mÈthodes pour la gestion du document prÈsent.
+ * Classe qui fournis des m√©thodes pour la gestion du document pr√©sent.
  * 
- * Toutes les mÈthodes de cette classe sont statiques afin d'Èviter de crÈer des objets
- * afin d'utiliser que des mÈthodes utilitaires.
+ * Toutes les m√©thodes de cette classe sont statiques afin d'√©viter de cr√©er des objets
+ * afin d'utiliser que des m√©thodes utilitaires.
  * 
- * @author Louis-…tienne Dorval, Alexis LÈgarÈ-Julien, FrÈdÈrik Paradis et Simon Perreault
+ * @author Louis-√âtienne Dorval, Alexis L√©gar√©-Julien, Fr√©d√©rik Paradis et Simon Perreault
  */
 public class FileMenu {
 
-	private static final String MESSAGE_ERROR_OPEN = "Impossible d'ouvrir le fichier spÈcifiÈ.";
+	private static final String MESSAGE_ERROR_OPEN = "Impossible d'ouvrir le fichier sp√©cifi√©.";
 	private static final String EXIT_SAVE = "Voulez-vous enregistrer le document?";
 	
-	private static boolean alreadySave = false; //Est vrai lorsque le fichier est dÈj‡ enregistrÈ quelque part.
-	private static boolean modified = false; //Est vrai lorsque le fichier a ÈtÈ modifiÈ.
-	private static File currentFile = null; //Contient le fichier prÈsent s'il a dÈj‡ ÈtÈ enregistrÈ.
+	private static boolean alreadySave = false; //Est vrai lorsque le fichier est d√©j√† enregistr√© quelque part.
+	private static boolean modified = false; //Est vrai lorsque le fichier a √©t√© modifi√©.
+	private static File currentFile = null; //Contient le fichier pr√©sent s'il a d√©j√† √©t√© enregistr√©.
 
 	/**
-	 * Cette mÈthode ouvre un nouveau document.
+	 * Cette m√©thode ouvre un nouveau document.
 	 * @return Retourne faux si la personne chosi de ne pas ouvrir un nouveau document (Annuler)
 	 */
 	public static boolean newDocument() {
@@ -65,7 +65,7 @@ public class FileMenu {
 	}
 
 	/**
-	 * Cette mÈthode permet d'ouvrir un document sur le disque.
+	 * Cette m√©thode permet d'ouvrir un document sur le disque.
 	 */
 	public static void openDocument() {
 		JFileChooser file = new JFileChooser();
@@ -86,9 +86,9 @@ public class FileMenu {
 	}
 
 	/**
-	 * Cette mÈthode enregistre un document dÈj‡ enregistrÈ. Elle 
-	 * appelle la mÈthode <code>saveDocumentAs</code> si le document
-	 * n'a jamais ÈtÈ enregistÈ.
+	 * Cette m√©thode enregistre un document d√©j√† enregistr√©. Elle 
+	 * appelle la m√©thode <code>saveDocumentAs</code> si le document
+	 * n'a jamais √©t√© enregist√©.
 	 * @see FileMenu#saveDocumentAs()
 	 */
 	public static void saveDocument() {
@@ -103,7 +103,7 @@ public class FileMenu {
 	}
 
 	/**
-	 * Ouvre une fenÍtre de dialogue qui permet d'enregistrer le document prÈsent.
+	 * Ouvre une fen√™tre de dialogue qui permet d'enregistrer le document pr√©sent.
 	 */
 	public static void saveDocumentAs() {
 		JFileChooser file = new JFileChooser();
@@ -117,7 +117,7 @@ public class FileMenu {
 	}
 
 	/**
-	 * Modifie l'Ètat du document comme Ètant modifiÈ.
+	 * Modifie l'√©tat du document comme √©tant modifi√©.
 	 * @see FileMenu#setUnmodifiedDocument()
 	 */
 	public static void setModifiedDocument() {
@@ -131,7 +131,7 @@ public class FileMenu {
 	}
 
 	/**
-	 * Modifie l'Ètat du document comme Ètant non-modifiÈ.
+	 * Modifie l'√©tat du document comme √©tant non-modifi√©.
 	 * @see FileMenu#setModifiedDocument()
 	 */
 	private static void setUnmodifiedDocument() {
@@ -145,15 +145,15 @@ public class FileMenu {
 	}
 
 	/**
-	 * Retourne vrai si le document prÈsent a ÈtÈ modifiÈ
-	 * @return Retourne vrai si le document prÈsent a ÈtÈ modifiÈ
+	 * Retourne vrai si le document pr√©sent a √©t√© modifi√©
+	 * @return Retourne vrai si le document pr√©sent a √©t√© modifi√©
 	 */
 	public static boolean isModified() {
 		return FileMenu.modified;
 	}
 	
 	/**
-	 * Lit le fichier spÈcifiÈ en paramËtre
+	 * Lit le fichier sp√©cifi√© en param√®tre
 	 * @param f Le fichier
 	 * @return Le fichier complet en String
 	 */
@@ -177,9 +177,9 @@ public class FileMenu {
 	}
 
 	/**
-	 * …crit le texte dans le fichier spÈcifiÈ en paramËtre
+	 * √âcrit le texte dans le fichier sp√©cifi√© en param√®tre
 	 * @param f Le fichier
-	 * @param texte Le texte ‡ Ècrire dans le fichier
+	 * @param texte Le texte √† √©crire dans le fichier
 	 */
 	private static void writeFile(File f, String texte) {
 		try {

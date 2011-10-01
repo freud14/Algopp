@@ -1,4 +1,4 @@
-package tpFinal.form;
+ï»¿package tpFinal.form;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,12 +14,12 @@ import tpFinal.model.Executor;
 import tpFinal.model.FileMenu;
 
 /**
- * Crée un JMenuBar personnalisé pour l'application.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * CrÃ©e un JMenuBar personnalisÃ© pour l'application.
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class AppMenuBar extends JMenuBar implements ActionListener {
 
-	//Texte du menu « Fichier »
+	//Texte du menu Â« Fichier Â»
 	private static final String DEFAULT_FILE = "Fichier";
 	private static final String DEFAULT_NEW = "Nouveau";
 	private static final String DEFAULT_OPEN = "Ouvrir...";
@@ -27,28 +27,28 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
 	private static final String DEFAULT_SAVE_AS = "Enregistrer sous...";
 	private static final String DEFAULT_EXIT = "Quitter";
 
-	//Texte du menu « Édition »
-	private static final String DEFAULT_EDIT = "Édition";
+	//Texte du menu Â« Ã‰dition Â»
+	private static final String DEFAULT_EDIT = "Ã‰dition";
 	private static final String DEFAULT_UNDO = "Annuler";
-	private static final String DEFAULT_REDO = "Rétablir";
+	private static final String DEFAULT_REDO = "RÃ©tablir";
 	private static final String DEFAULT_CUT	= "Couper";
 	private static final String DEFAULT_COPY = "Copier";
 	private static final String DEFAULT_PASTE = "Coller";
 	private static final String DEFAULT_DELETE = "Supprimer";
-	private static final String DEFAULT_SELECT_ALL = "Sélectionner tout";
+	private static final String DEFAULT_SELECT_ALL = "SÃ©lectionner tout";
 	private static final String DEFAULT_FIND = "Rechercher/Remplacer...";
 	
-	//Texte du menu « Exécuter »
+	//Texte du menu Â« ExÃ©cuter Â»
 	private static final String DEFAULT_RUN = "Code";
-	private static final String DEFAULT_RUN_ITEM = "Exécuter code";
+	private static final String DEFAULT_RUN_ITEM = "ExÃ©cuter code";
 
-	//Texte du menu « ? »
+	//Texte du menu Â« ? Â»
 	private static final String DEFAULT_OTHERS = "?";
 	private static final String DEFAULT_HELP = "Afficher l'aide";
-	private static final String DEFAULT_ABOUT = "À propos de Algo++";
+	private static final String DEFAULT_ABOUT = "Ã€ propos de Algo++";
 	
 	/**
-	 * Crée le JMenuBar et ajoute les items des menus.
+	 * CrÃ©e le JMenuBar et ajoute les items des menus.
 	 */
 	public AppMenuBar() {
 		super();
@@ -77,10 +77,10 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
 	}
 
 	/**
-	 * Initialise le menu Édition
+	 * Initialise le menu Ã‰dition
 	 */
 	private void initEditionMenu (){
-		//Menu Édition
+		//Menu Ã‰dition
 		JMenu edit = new JMenu(AppMenuBar.DEFAULT_EDIT);
 
 		this.addMenuItem(AppMenuBar.DEFAULT_UNDO, KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK), AppMenuBar.DEFAULT_UNDO, edit);
@@ -98,10 +98,10 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
 	}
 	
 	/**
-	 * Initialise le menu Exécuté
+	 * Initialise le menu ExÃ©cutÃ©
 	 */
 	private void initRunMenu (){
-		//Menu Exécuter
+		//Menu ExÃ©cuter
 		JMenu run = new JMenu(AppMenuBar.DEFAULT_RUN);
 
 		this.addMenuItem(AppMenuBar.DEFAULT_RUN_ITEM, KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0), AppMenuBar.DEFAULT_RUN_ITEM, run);
@@ -123,7 +123,7 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
 	}
 	
 	/**
-	 * Initialise des MenuItem avec les paramètres
+	 * Initialise des MenuItem avec les paramÃ¨tres
 	 * @param name 			Nom du bouton
 	 * @param key			Raccourcis clavier
 	 * @param actCommand	ActionCommand
@@ -138,7 +138,7 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
 	}
 
 	/**
-	 * Cette méthode est appelée lorsque l'on clique sur un des items des menus.
+	 * Cette mÃ©thode est appelÃ©e lorsque l'on clique sur un des items des menus.
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals(AppMenuBar.DEFAULT_NEW)) {

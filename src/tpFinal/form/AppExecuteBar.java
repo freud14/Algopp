@@ -1,4 +1,4 @@
-package tpFinal.form;
+ï»¿package tpFinal.form;
 
 import java.awt.Color;
 
@@ -7,11 +7,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 
 /**
- * Contient les zones de textes qui font office de zone d'exécution
- * et de zone d'erreur. Elle contient des méthodes qui permet de 
+ * Contient les zones de textes qui font office de zone d'exÃ©cution
+ * et de zone d'erreur. Elle contient des mÃ©thodes qui permet de 
  * vider les zones de textes, d'ajouter du texte et de changer d'onglet 
  * automatiquement.
- * @author Louis-Étienne Dorval, Alexis Légaré-Julien, Frédérik Paradis et Simon Perreault
+ * @author Louis-Ã‰tienne Dorval, Alexis LÃ©garÃ©-Julien, FrÃ©dÃ©rik Paradis et Simon Perreault
  */
 public class AppExecuteBar extends JTabbedPane {
 
@@ -37,13 +37,13 @@ public class AppExecuteBar extends JTabbedPane {
 		this.error.setEditable(false);
 		this.error.setAutoscrolls(true);
 
-		this.addTab("Zone d'exécution", this.scrollDisplay);
-		this.addTab("Erreur d'exécution", this.scrollError);
+		this.addTab("Zone d'exÃ©cution", this.scrollDisplay);
+		this.addTab("Erreur d'exÃ©cution", this.scrollError);
 	}
 
 	/**
-	 * Ajoute une nouvelle ligne à la zone d'exécution.
-	 * @param line La ligne à ajouter sans retour à la ligne.
+	 * Ajoute une nouvelle ligne Ã  la zone d'exÃ©cution.
+	 * @param line La ligne Ã  ajouter sans retour Ã  la ligne.
 	 */
 	public void displayNewLine(String line) {
 		this.displayZone.append(line + "\r\n");
@@ -52,11 +52,11 @@ public class AppExecuteBar extends JTabbedPane {
 	}
 
 	/**
-	 * Ajoute une nouvelle ligne à la zone d'erreur.
-	 * @param lineNb La ligne à ajouter sans retour à la ligne.
+	 * Ajoute une nouvelle ligne Ã  la zone d'erreur.
+	 * @param lineNb La ligne Ã  ajouter sans retour Ã  la ligne.
 	 */
 	public void displayNewError(String error, int lineNb) {
-		this.error.append("\r\n" +  error + " à la ligne numéro " + lineNb + ".");
+		this.error.append("\r\n" +  error + " Ã  la ligne numÃ©ro " + lineNb + ".");
 		this.error.setCaretPosition(this.error.getDocument().getLength());
 		this.gotoErrorTab();
 	}
@@ -69,14 +69,14 @@ public class AppExecuteBar extends JTabbedPane {
 	}
 
 	/**
-	 * Permet de basculer vers l'onglet de la zone d'exécution.
+	 * Permet de basculer vers l'onglet de la zone d'exÃ©cution.
 	 */
 	public void gotoDisplayTab() {
 		this.setSelectedComponent(this.scrollDisplay);
 	}
 
 	/**
-	 * Vide la zone d'exécution.
+	 * Vide la zone d'exÃ©cution.
 	 */
 	public void clearDisplayZone() {
 		this.displayZone.setText("");
